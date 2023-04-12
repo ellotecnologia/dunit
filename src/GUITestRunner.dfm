@@ -22,6 +22,7 @@ object GUITestRunner: TGUITestRunner
     22222222DD80002222222223DD0000082222222D80000000082223700000F81F
     0000E0070000C003000080010000800100000000000000000000000000000000
     000000000000000000008001000080010000C0030000E0070000F81F0000}
+  KeyPreview = True
   Menu = MainMenu
   OldCreateOrder = True
   Position = poDefaultPosOnly
@@ -29,22 +30,23 @@ object GUITestRunner: TGUITestRunner
   ShowHint = True
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnKeyUp = FormKeyUp
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object BodyPanel: TPanel
     Left = 0
     Top = 0
-    Width = 492
-    Height = 446
+    Width = 484
+    Height = 442
     Align = alClient
     BevelOuter = bvNone
     BorderWidth = 2
     TabOrder = 0
     object ErrorBoxSplitter: TSplitter
       Left = 2
-      Top = 363
-      Width = 488
+      Top = 359
+      Width = 480
       Height = 6
       Cursor = crVSplit
       Align = alBottom
@@ -57,16 +59,16 @@ object GUITestRunner: TGUITestRunner
     object TopPanel: TPanel
       Left = 2
       Top = 2
-      Width = 488
-      Height = 361
+      Width = 480
+      Height = 357
       Align = alClient
       BevelOuter = bvNone
       ParentColor = True
       TabOrder = 0
       object ResultsSplitter: TSplitter
         Left = 0
-        Top = 182
-        Width = 488
+        Top = 178
+        Width = 480
         Height = 5
         Cursor = crVSplit
         Align = alBottom
@@ -76,8 +78,8 @@ object GUITestRunner: TGUITestRunner
       object TreePanel: TPanel
         Left = 0
         Top = 0
-        Width = 488
-        Height = 182
+        Width = 480
+        Height = 178
         Align = alClient
         BevelOuter = bvNone
         BorderWidth = 2
@@ -87,7 +89,7 @@ object GUITestRunner: TGUITestRunner
         object lblTestTree: TLabel
           Left = 2
           Top = 31
-          Width = 484
+          Width = 476
           Height = 19
           Align = alTop
           AutoSize = False
@@ -98,8 +100,8 @@ object GUITestRunner: TGUITestRunner
         object TestTree: TTreeView
           Left = 2
           Top = 50
-          Width = 484
-          Height = 130
+          Width = 476
+          Height = 126
           Hint = 'Hierarchy of test cases. Checked test cases will be run.'
           Align = alClient
           HideSelection = False
@@ -124,7 +126,7 @@ object GUITestRunner: TGUITestRunner
         object ToolBar1: TToolBar
           Left = 2
           Top = 2
-          Width = 484
+          Width = 476
           Height = 29
           Caption = 'ToolBar'
           EdgeBorders = [ebTop, ebBottom]
@@ -199,8 +201,8 @@ object GUITestRunner: TGUITestRunner
       end
       object ResultsPanel: TPanel
         Left = 0
-        Top = 187
-        Width = 488
+        Top = 183
+        Width = 480
         Height = 174
         Align = alBottom
         BevelOuter = bvNone
@@ -210,7 +212,7 @@ object GUITestRunner: TGUITestRunner
         object ProgressPanel: TPanel
           Left = 2
           Top = 2
-          Width = 484
+          Width = 476
           Height = 46
           Align = alTop
           BevelOuter = bvLowered
@@ -220,7 +222,7 @@ object GUITestRunner: TGUITestRunner
           object TopProgressPanel: TPanel
             Left = 5
             Top = 5
-            Width = 474
+            Width = 466
             Height = 18
             Align = alTop
             BevelOuter = bvNone
@@ -230,7 +232,7 @@ object GUITestRunner: TGUITestRunner
             object ProgressBar: TProgressBar
               Left = 62
               Top = 2
-              Width = 410
+              Width = 402
               Height = 14
               Hint = 'Shows the proportion of tests run'
               Align = alClient
@@ -253,7 +255,7 @@ object GUITestRunner: TGUITestRunner
           object ScorePanel: TPanel
             Left = 5
             Top = 23
-            Width = 474
+            Width = 466
             Height = 18
             Align = alClient
             BevelOuter = bvNone
@@ -261,7 +263,7 @@ object GUITestRunner: TGUITestRunner
             ParentColor = True
             TabOrder = 1
             object LbProgress: TLabel
-              Left = 416
+              Left = 408
               Top = 2
               Width = 56
               Height = 14
@@ -273,7 +275,7 @@ object GUITestRunner: TGUITestRunner
             object ScoreBar: TProgressBar
               Left = 62
               Top = 2
-              Width = 354
+              Width = 346
               Height = 14
               Hint = 'Shows the proportion of successful tests'
               Align = alClient
@@ -298,7 +300,7 @@ object GUITestRunner: TGUITestRunner
         object ResultsView: TListView
           Left = 2
           Top = 48
-          Width = 484
+          Width = 476
           Height = 39
           Hint = 'Shows statistics about the current/last run'
           Align = alTop
@@ -364,7 +366,7 @@ object GUITestRunner: TGUITestRunner
         object FailureListView: TListView
           Left = 2
           Top = 87
-          Width = 484
+          Width = 476
           Height = 85
           Hint = 'Shows the list of failed tests'
           Align = alClient
@@ -403,8 +405,8 @@ object GUITestRunner: TGUITestRunner
     end
     object ErrorBoxPanel: TPanel
       Left = 2
-      Top = 369
-      Width = 488
+      Top = 365
+      Width = 480
       Height = 75
       Align = alBottom
       BevelOuter = bvNone
@@ -416,7 +418,7 @@ object GUITestRunner: TGUITestRunner
       object ErrorMessageRTF: TRichEdit
         Left = 2
         Top = 2
-        Width = 484
+        Width = 476
         Height = 71
         Align = alClient
         Lines.Strings = (

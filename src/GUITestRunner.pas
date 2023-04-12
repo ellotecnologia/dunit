@@ -303,6 +303,8 @@ type
     procedure TestCaseIgnoreSetUpTearDownLeaksMenuItemClick(Sender: TObject);
     procedure TestCaseIgnoreSetUpTearDownLeaksMenuItemDrawItem(Sender: TObject;
       ACanvas: TCanvas; ARect: TRect; Selected: Boolean);
+    procedure FormKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     FNoCheckExecutedPtyOverridden: Boolean;
     FMemLeakDetectedPtyOverridden: Boolean;
@@ -455,7 +457,8 @@ uses
 {$ENDIF}
   Registry,
   SysUtils,
-  Clipbrd;
+  Clipbrd,
+  Dialogs, StrUtils;
 
 {$BOOLEVAL OFF}  // Required or you'll get an AV
 {$R *.DFM}
@@ -2316,6 +2319,36 @@ begin
     {$ENDIF}
   {$ENDIF}
   end;    // with
+end;
+
+function GetNodeByText(ATree: TTreeView; AValue: String): TTreeNode;
+var Node: TTreeNode;
+begin
+   Result := nil;
+   if ATree.Items.Count = 0 then Exit;
+   Node := ATree.Items[0];
+   while Node <> nil do
+   begin
+      if AnsiContainsText(Node.Text, AValue) then
+      begin
+         Result := Node;
+         Result.MakeVisible;
+         Result.Selected := True;
+         Break;
+      end;
+      Node := Node.GetNext;
+   end;
+end;
+
+procedure TGUITestRunner.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+var TestName: String;
+begin
+  if (ssCtrl in Shift) and (Key = 70) then begin
+      TestName := InputBox('Search', 'Test name', '');
+      if TestName <> '' then begin
+         GetNodeByText(TestTree, TestName);
+      end;
+   end;
 end;
 
 end.
